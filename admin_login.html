@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <style>
+      body{
+    height: 100vh;
+    background-image: url(adminlogin.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    </style>
+    <body>
+        <div class="topnav">
+  			<img src="logo.jpg" height='50' width='70' alt="Logo">
+  			<div class="topnav-right">
+          <a href="userlogin.html">BACK</a>
+    			<a href="admin_register.html">REGISTER</a>
+  			</div>
+		</div>
+        <div class="container">
+           <h1>ADMIN LOGIN</h1>
+          <form method="post" action="home.html">
+			     <div class="row">
+            <label for="uname">User name</label><br>
+				    <input type="text" name="username" required><br><br>
+				    <label for="pwd">Password</label><br>
+				    <input type="password"  name="password" required><br><br>
+			     </div>	
+			     <button type="submit" name="submit" value="login"><a href="admin_home.html">LOGIN</a></button>
+          </form>
+        </div>
+        </div>
+    </body>  
+</html>

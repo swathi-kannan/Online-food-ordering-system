@@ -1,0 +1,37 @@
+<html>
+<head>
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+body{
+    height: 100vh;
+    background-image: url(thankyou.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.checked {
+  color: orange;
+}
+    </style>
+    <body>
+      <div class="topnav">
+  			<img src="logo.jpg" height='50' width='50' alt="Logo">
+  			<div class="topnav-right">
+    			<a href="userhome.php">HOME</a>
+  			</div>
+		  </div>
+      <div class="container">
+        <center><p style ="color:white;">THANK YOU VISIT US AGAIN :)</p></center>
+         <form action="userhome.php">
+          <div class="form-group">
+            <label for="comment">Write feedback for our improvement</label>
+            <textarea class="form-control" rows="2" id="comment" name="text"></textarea>
+          </div>
+          <button style="width:10%;" type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+    </body>
+</html>

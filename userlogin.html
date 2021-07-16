@@ -1,0 +1,90 @@
+<?php
+session_start();
+
+if($_POST['submit']) {
+ 
+  include_once('connection.php');
+  $accountnumber = strip_tags($_POST['accountnumber']);
+  $pin = strip_tags($_POST['pin']);
+
+  $sql = "SELECT * FROM accounts where accountnumber = '$accountnumber' and pin='$pin' ";
+  $query = mysqli_query($db,$sql);
+  if($query) {
+    $row = mysqli_fetch_row($query);
+    $userId= $row[0];
+        $dbaccountnumber= $row[1];
+        $dbaccountname= $row[2];
+        $dbpin= $row[3];
+        $dbaddress=$row[4];
+        $dbphonenumber=$row[5];
+        $dbgender=$row[6];
+        $dbage=$row[7];
+        $dbbalance=$row[8];
+       }
+  if($accountnumber == $dbaccountnumber && $pin == $dbpin) {
+    $_SESSION['id'] = $userId;
+        $_SESSION['if'] = $dbaccountnumber;
+        $_SESSION['il'] = $dbaccountname;
+        $_SESSION['ia'] = $dbpin;
+        $_SESSION['ib'] = $dbaddress;
+        $_SESSION['ic'] = $dbphonenumber;
+        $_SESSION['iz'] = $dbgender;
+        $_SESSION['ig'] =  $dbage; 
+    header('Location: atmnew.php');
+  }
+  else {
+    echo "<b><i>accountnumber/pin incorrect</i><b>";
+
+  }
+}
+
+?>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+<script>
+function validateForm()
+{
+var x = document.forms["myForm"]["username"].value;
+var y = document.forms["myForm"]["password"].value;
+var z = document.forms["myForm"]["submit"].value;
+var alphaexp=/^[a-zA-Z]+$/;
+if (!x.match(alphaexp))
+{
+alert("Invalid Name");
+return false;
+}
+if(y.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+}
+else
+{
+alert("logged in");
+}
+}
+</script>
+        <div class="topnav">
+  			<img src="logo.jpg" height='50' width='70' alt="Logo">
+  			<div class="topnav-right">
+  				<a href="admin_login.html">ADMIN</a>
+    			<a href="register.html">REGISTER</a>
+  			</div>
+		</div>
+        <div class="container">
+           <h1>LOGIN</h1>
+            <form class="myForm" method="post" action="" onsubmit="return validateForm()">
+			<div class="row">
+        <label for="uname">User name</label><br>
+				<input type="text" id="username" name="username" required><br><br>
+				<label for="pwd">Password</label><br>
+				<input type="password" id="password" name="password" required>
+			</div>	
+			<button type="submit"  name="submit" value="login">LOGIN</button>
+            </form>
+        </div>
+        </div>
+    </body>  
+</html>

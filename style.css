@@ -1,0 +1,97 @@
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.topnav {
+  background-color: rgba(0,0,0,.8);
+  overflow: hidden;
+  position: fixed;
+   width: 100%;
+ top:0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #f2f2f2;
+  color: black;
+}
+.topnav-right {
+  float: right;
+}
+body{
+    height: 100vh;
+    background-image: url(food.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*.filter{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.7);
+}
+
+.column {
+  float: left;
+   width: 45%;
+  padding: 10px;
+  height: 180px; 
+}*/
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 25px;
+    width: 300px;
+	height:330px;
+    background-color: rgba(0,0,0,.8);
+    box-shadow: 0 0 10px rgba(255,255,255,.8);
+}
+.container h1{
+    text-align: center;
+    color: #fafafa;
+    margin-bottom: 25px;
+    border-bottom: 4px solid #2979ff;
+}
+
+.container form input{
+    text-align: left;
+    padding: 8px 30px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #2979ff;
+    color: #fff;
+    font-size: 20px;
+}
+.container label{
+    color: #90caf9;
+    text-align: left;
+}
+.container form button{
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    background-color:#2979ff;
+    font-size: 18px;
+    color: #fafafa;
+}
+
+

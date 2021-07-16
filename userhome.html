@@ -1,0 +1,238 @@
+<?php
+session_start();
+include_once('connection.php');
+$sql = "SELECT * FROM dispmenu";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  .jumbotron {
+    background-color:#FE0002;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-yellow {
+    background-color: #FFC72C;
+  }
+  .navbar {
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.8);
+    overflow: hidden;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar  {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #000000 !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }  
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img src="logo.jpg" height='50' width='70' alt="Logo">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#soups">SOUPS</a></li>
+        <li><a href="#services">STARTERS</a></li>
+        <li><a href="#portfolio">GRAVY</a></li>
+        <li><a href="#pricing">MAIN DISH</a></li>
+        <li><a href="#contact">DESSERTS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>FOOD MENU</h1> 
+  <p>People who loves food are the best !</p> 
+</div>
+
+<!-- Container (About Section) -->
+<div id="soups" class="container-fluid text-center bg-yellow">
+  <div class="row slideanim">
+    <div class="col-sm-12" style="height:300px">
+       <h2>SOUPS</h2>
+      <br>
+      <font size="4"><b><center><br>
+      <table  style="length:900px;width:650px;">
+              <thead>
+                <tr>
+                  <td>ITEM_NO</td>&nbsp;&nbsp;&nbsp;
+                  <td>ITEM</td>&nbsp;
+                  <td>PRICE</td>&nbsp;&nbsp;
+                  <td>QUANTITY</td>&nbsp;&nbsp;
+                  <td>ADD TO CART</td>&nbsp;&nbsp;
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  while($row = $result->fetch_assoc()){
+                    echo
+                    "<tr>
+                      <td>".$row['item_no']."</td>
+                      <td>".$row['item']."</td>
+                      <td>".$row['price']."</td>
+                      <td><input style='width:20%;' type='number' id='quantity' name='quantity' min='1'></td>
+                      <td>
+                        <button  onclick='insert(".$row['item_no'].")';value='".$row['item_no']."'>ADD</button></td>
+                    </tr>\n";
+                  }
+                ?>
+              </tbody>
+      </table>
+      </font>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div id="services" class="container-fluid text-center">
+  <div class="row slideanim">
+    <div class="col-sm-12" style="height:300px">
+  <h2>STARTERS</h2><br>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div id="portfolio" class="container-fluid text-center bg-yellow">
+  <div class="row slideanim">
+    <div class="col-sm-12" style="height:300px">
+    <h2>GRAVY</h2><br>
+   </div>
+ </div>
+</div>
+
+<!-- Container (Pricing Section) -->
+<div id="pricing" class="container-fluid text-center">
+  <div class="row slideanim">
+      <div class="col-sm-12" style="height:300px">
+      <h2>MAIN DISH</h2><br>
+    </div>    
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid text-center bg-yellow">
+  <div class="row slideanim">
+      <div class="col-sm-12" style="height:300px">
+      <h2>DESSERTS</h2><br>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>

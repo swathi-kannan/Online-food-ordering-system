@@ -1,0 +1,67 @@
+<?php
+session_start();
+include_once('connection.php');
+$sql = "SELECT * FROM cart";
+$result = $conn->query($sql);
+?>
+<html>
+<head>
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="footer.css">
+        <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body{
+    height: 100vh;
+    background-image: url(food.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    </style>
+    <body>
+      <div class="topnav">
+        <img src="logo.jpg" height='50' width='70' alt="Logo">
+        <div class="topnav-right">
+          <a href="home.php">HOME</a>
+        </div>
+      </div>
+      <font color="white" size="4"><b><center><br>
+      <table  style="length:900px;width:500px;">
+              <thead>
+                <tr>
+                  <td>ITEM_NO</td>&nbsp;&nbsp;&nbsp;
+                  <td>ITEM</td>&nbsp;
+                  <td>PRICE</td>&nbsp;&nbsp;
+                </tr>
+              </thead>
+              <tbody>
+               /* <?php
+                  while($row = $result->fetch_assoc()){
+                    echo
+                    "<tr>
+                      <td>".$row['item_no']."</td>
+                      <td>".$row['item']."</td>
+                      <td>".$row['price']."</td>
+                    </tr>\n";
+                  }
+                  echo
+                  "<tr>
+                  <td>Total     :</td>
+                  </tr>";
+                ?>*/
+              </tbody>
+      </table>
+      </font>
+      <div class="footer">
+        <div class="row">
+        <div class="column1">
+          <button class="button1" type="submit" name="submit"><a href="waiting.php">CONFIRM ORDER</a></button>
+        </div>
+        <div class="column2">
+          <button class="button1" type="submit" name="submit"><a href="parcelbill.php">TAKE AWAY CHECKOUT</a></button>
+        </div>
+      </div>
+      </div>
+    </body>
+</html>
